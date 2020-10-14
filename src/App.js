@@ -1,24 +1,30 @@
+// jshint esversion: 8
+
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import Loading from './components/Loading';
+import { useAuth0 } from '@auth0/auth0-react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 function App() {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) return <Loading />;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <Switch>
+          <Route component={Home} exact path="/" />
+          {/* <Route component={Login} path="/login" /> */}
+          <Route component={About} path="/about" />
+          <Route component={Contact} path="/contact" />
+          {/* <Route component={SignUp} path="/signup" /> */}
+          {/* <Route component={Page404} /> */}
+        </Switch>
+      </div>
     </div>
   );
 }

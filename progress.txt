@@ -1,0 +1,156 @@
+Friday, March 27th, 2020
+- Made and connected git and github
+- set up gitignore and env
+- Set up name and number validation using 'mongoose-beautiful-unique-validation'
+- Prevented exact duplicates in mongoose with unique
+- Set up basic database
+- Worked on Messenger Class Functions
+
+Tuesday, March 31st, 2020
+- Reworked Messenger class to properly use multiple collections
+- Made Group Class
+- Respecified needed functionality in order
+- Stopped at sendMessageFunction
+
+Saturday, April 11th, 2020
+- Remade whole architecture
+- Made most of app_api
+
+TODO:
+- Come Up with Next React Pages:
+  - After Logging in, load new logged in page
+    - Groups page (from here can navigate to Actions page or history)
+      - Action Page (page where messages are sent)
+      - History Page (where messages can be looked at)
+  - Profile and settings
+
+- Fix mobile behavior so it looks good on phone
+  - Add classes to stlyes which just make everything look nice
+  
+- Connect front end to back end
+- Get App functionality up (business logic)
+
+- Fix Navigation.jsx to select appropriate navigation
+
+- Look into passing time when message was created
+- create custom errors (and error pages with React) and refactor code for error cases
+- Make App Server controllers
+- Make App Server Routes
+- Graceful Exit of mongoose
+- change all sensitive info to env
+
+- Upgrade Twilio membership
+- Make Better Front-End
+- Deploy Website on Github or Heroku
+- Implement security via udemy security model (after api is guaranteed working)
+- Implement cookies and give cookie disclaimer
+- Write github documentation for project
+- Change Auth0 to production URLS in settings when deploying via heroku
+
+Issues to look out for that were previously encountered when working with SSR (not using anymore)
+  - Webpack and react hydrate and babelrc etc etc necessary (headache rn)
+  - In this new project, we do not hydrate or use webpack, make sure this isn't an issue
+  - Css classes imported but not applied, check rules for importing webpack css classes
+    - May need to switch from webpack (issues with camel casing and what not)
+  - Figure out images and window sizing
+
+DONE:
+- Load Profile information
+- Implement medium/small version
+- Fix Sizing Loading
+- Make Loading Component
+- Make Project from scratch using online Auth0 guide
+- Change Login, logout, and signup buttons to custom css buttons
+- Start setting up Auth0
+- Look into SSR vs CSR and decide which is best (CSR for now)
+- Get new project router to work (switched to browserrouter)
+- Remake project directory skeleton and slowly add all components in a cleaner way
+- Make simple example project and really learn how to connect front end in relation to backend
+- Make sure webpack working and loading css (fixing w/ babel-plugin-css-modules-transform)
+- Fix Webpack error/Resolve window-size issue (use screenz)
+- SSR with React Router Dom
+- Try url-loader (do this latee and try with different image)
+- Uninstall file-loader and use next-images( both uninstalled)
+- Create structure and install dependencies to render react through express
+- Install and use webpack file-loader for website picture(s)
+- Make initial home page, sign up, login, etc
+- Learn React
+- Initial website design
+- Take Udemy design course
+
+API
+- Full API Test
+- Replace current update ways with mongoose update methods (not necessary)
+- Update Schema unique messages
+- Populate messages in groups.js
+- Test API messages controller
+- Question: Is it necessary to clear group messages and people? Answer: No
+- Update database for working populate
+- Make custom responses
+- PROBLEM: Unique people properties causes issues with same person in multiple groups
+  SOLUTION: Taking out unique in person schema
+- Make easier names to understand for req.body and variables
+- Check if we need to depopulate manually (if this would even be necessary-probably not with custom responses)
+- Make sure people collection is updated as well as foundGroup.people
+- Learn how to write automated postman tests
+- Hand trace each API method and make sure it makes sense
+- Go through people controller and check for params and body info in functions
+  as well as sending proper responses (including error codes and success status)
+- Go through group controller and check for params and body info in functions
+  as well as sending proper responses (including error codes and success status)
+- Write groupsDeleteOne()
+- Go through messages controller and check for params and body info in functions
+  as well as sending proper responses (including error codes and success status)
+- Figure out how peopleUpdateOne would work
+- Correct names of api controller methods
+- Write new routes
+- Separate controller into people.js, messages.js and groups.js
+- Separate the models in Group.js
+- Make deleted person collection (each table will be based on Group)
+- Add deleted person to deleted person collection (with group attribute)
+- Finish Update Person Helper then deletePerson
+- add personal note to person class
+- Make interconnections between group and person schema via populate methods
+
+NOTES:
+- Group update currently updates both note and name. Depending on what we send
+we may have to change this
+- When updating, make sure if nothing is inputed, old information is passed
+
+PROBLEMS TO TALK ABOUT IN INTERVIEWS:
+- Deciding between SSR and CSR
+
+
+TESTING:
+
+/groups
+- Post test (success)
+  - Should not allow duplicate names
+- Get test (success)
+- Delete test (success)
+- Final tests with messages and people included (success)
+
+/groups/:groupid
+- Get test (success)
+- Delete test (success)
+- Put test (success)
+
+/groups/:groupid/people
+- Post test(success)
+- Get test (success)
+- Delete test (success)
+
+/groups/:groupid/people/:personid
+- Get test (success)
+- Delete test (success)
+- Put test (success)
+
+/groups/:groupid/messages
+- Post test (success)
+- Get test (success)
+- Delete test (success)
+
+/groups/:groupid/messages/:messageid
+- Get test (success)
+- Delete test (success)
+- Put test (success)
